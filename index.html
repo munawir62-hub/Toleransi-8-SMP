@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToleranSik - Media Pembelajaran Interaktif Toleransi Kelas 8 SMP</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f7ff;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchScreen('home')">
+                <div class="bg-white text-teal-600 p-2 rounded-lg shadow-inner">
+                    <i class="fa-solid fa-handshake-angle text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">Toleran<span class="text-yellow-300">Sik!</span></h1>
+                    <p class="text-xs text-teal-100">Media Pembelajaran Interaktif Kelas VIII</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-2">
+                <button onclick="switchScreen('home')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition duration-200">
+                    <i class="fa-solid fa-house mr-1"></i> Beranda
+                </button>
+                <button onclick="switchScreen('materi')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition duration-200">
+                    <i class="fa-solid fa-book-open mr-1"></i> Materi
+                </button>
+                <button onclick="switchScreen('simulasi')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition duration-200">
+                    <i class="fa-solid fa-gamepad mr-1"></i> Studi Kasus
+                </button>
+                <button onclick="switchScreen('kuis')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition duration-200">
+                    <i class="fa-solid fa-circle-question mr-1"></i> Kuis Interaktif
+                </button>
+                <button onclick="switchScreen('refleksi')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition duration-200">
+                    <i class="fa-solid fa-heart mr-1"></i> Refleksi
+                </button>
+            </nav>
+            <div class="flex items-center space-x-2">
+                <!-- Sound Toggle (Web Audio API) -->
+                <button id="soundToggle" onclick="toggleSound()" class="bg-teal-600 hover:bg-teal-700 p-2 rounded-full text-white transition">
+                    <i id="soundIcon" class="fa-solid fa-volume-high"></i>
+                </button>
+                <span class="bg-emerald-600 px-3 py-1 rounded-full text-xs font-semibold shadow">PPKn SMP</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 py-8 flex-grow max-w-5xl">
+        
+        <!-- ================= BERANDA SCREEN ================= -->
+        <section id="screen-home" class="screen-section space-y-8 animate-fade-in">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
+                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center space-y-6">
+                    <span class="bg-teal-50 text-teal-700 font-semibold px-4 py-1.5 rounded-full text-xs w-max border border-teal-200">
+                        ⚡ Semangat Kebinekaan Indonesia
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 leading-tight">
+                        Mari Belajar <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-600">Toleransi</span> dengan Cara Seru!
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                        Selamat datang di ToleranSik! Media pembelajaran seru untuk memahami pentingnya sikap saling menghargai di tengah indahnya perbedaan bangsa Indonesia. Siap menjelajah materi dan tantangan serunya?
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="switchScreen('materi')" class="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center space-x-2 text-sm">
+                            <span>Mulai Petualangan</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="switchScreen('simulasi')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-6 py-3 rounded-xl transition text-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-gamepad text-teal-600"></i>
+                            <span>Main Studi Kasus</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 bg-gradient-to-br from-teal-50 to-emerald-100 p-8 flex items-center justify-center relative min-h-[300px]">
+                    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#319795_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                    <div class="relative z-10 text-center space-y-4 max-w-xs">
+                        <!-- Interactive Character Avatar -->
+                        <div class="w-40 h-40 bg-white rounded-full mx-auto shadow-xl flex items-center justify-center border-4 border-emerald-400 relative animate-bounce" style="animation-duration: 4s;">
+                            <i class="fa-solid fa-people-group text-7xl text-teal-500"></i>
+                            <div class="absolute -bottom-2 bg-emerald-500 text-white font-bold px-3 py-1 rounded-full text-xs shadow-md">
+                                Halo, Sobat Hebat!
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 font-medium">"Perbedaan bukanlah kelemahan, melainkan kekayaan luar biasa Indonesia."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Roadmap (Peta Belajar) -->
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 mb-6 text-center">Peta Pembelajaran Kita 🗺️</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Map Item 1 -->
+                    <div onclick="switchScreen('materi')" class="bg-white p-6 rounded-2xl shadow-md border-b-4 border-blue-500 hover:shadow-xl transition cursor-pointer transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4 font-bold text-lg">1</div>
+                        <h4 class="font-bold text-slate-800 mb-2">Makna Toleransi</h4>
+                        <p class="text-xs text-slate-500">Pahami konsep dasar, pentingnya, serta sejarah toleransi di Nusantara.</p>
+                    </div>
+                    <!-- Map Item 2 -->
+                    <div onclick="switchScreen('simulasi')" class="bg-white p-6 rounded-2xl shadow-md border-b-4 border-amber-500 hover:shadow-xl transition cursor-pointer transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-4 font-bold text-lg">2</div>
+                        <h4 class="font-bold text-slate-800 mb-2">Uji Empati</h4>
+                        <p class="text-xs text-slate-500">Hadapi situasi nyata sehari-hari dan pilih keputusan paling toleran.</p>
+                    </div>
+                    <!-- Map Item 3 -->
+                    <div onclick="switchScreen('kuis')" class="bg-white p-6 rounded-2xl shadow-md border-b-4 border-emerald-500 hover:shadow-xl transition cursor-pointer transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-4 font-bold text-lg">3</div>
+                        <h4 class="font-bold text-slate-800 mb-2">Asah Otak</h4>
+                        <p class="text-xs text-slate-500">Uji pemahamanmu lewat kuis interaktif yang seru dan menantang.</p>
+                    </div>
+                    <!-- Map Item 4 -->
+                    <div onclick="switchScreen('refleksi')" class="bg-white p-6 rounded-2xl shadow-md border-b-4 border-purple-500 hover:shadow-xl transition cursor-pointer transform hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-4 font-bold text-lg">4</div>
+                        <h4 class="font-bold text-slate-800 mb-2">Refleksi Diri</h4>
+                        <p class="text-xs text-slate-500">Tuliskan janji kecilmu untuk menjadi agen toleransi masa kini.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MATERI SCREEN ================= -->
+        <section id="screen-materi" class="screen-section hidden space-y-6 animate-fade-in">
+            <div class="flex items-center space-x-3 mb-4">
+                <i class="fa-solid fa-book-open text-2xl text-teal-600"></i>
+                <h2 class="text-2xl font-bold text-slate-800">Ruang Belajar Toleransi</h2>
+            </div>
+
+            <!-- Tab Buttons for Materi Sub-topics -->
+            <div class="flex border-b border-slate-200 overflow-x-auto whitespace-nowrap bg-white rounded-t-xl p-2 shadow-sm">
+                <button onclick="switchMateriTab(1)" id="tab-btn-1" class="px-5 py-3 font-semibold text-sm rounded-lg transition-all duration-200 bg-teal-500 text-white">
+                    1. Pengertian & Arti Penting
+                </button>
+                <button onclick="switchMateriTab(2)" id="tab-btn-2" class="px-5 py-3 font-semibold text-sm rounded-lg transition-all duration-200 text-slate-600 hover:bg-slate-50">
+                    2. Jenis-Jenis Toleransi
+                </button>
+                <button onclick="switchMateriTab(3)" id="tab-btn-3" class="px-5 py-3 font-semibold text-sm rounded-lg transition-all duration-200 text-slate-600 hover:bg-slate-50">
+                    3. Contoh Sikap & Tantangan
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="bg-white rounded-b-xl shadow-lg p-6 md:p-8 min-h-[350px]">
+                <!-- Tab 1 -->
+                <div id="materi-tab-1" class="materi-content space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full font-semibold">Sub-Bab 1</span>
+                            <h3 class="text-2xl font-extrabold text-slate-800">Apa Itu Sebenarnya Toleransi?</h3>
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                Istilah toleransi berasal dari bahasa Latin <strong>"tolerare"</strong>, yang artinya menahan diri, bersikap sabar, membiarkan orang lain berpendapat lain, dan berhati lapang terhadap orang-orang yang memiliki pendapat berbeda.
+                            </p>
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                Dalam konteks kebangsaan, toleransi adalah sikap saling menghormati, menerima, menghargai keberagaman budaya, agama, suku, dan perbedaan fisik yang ada di sekitar kita.
+                            </p>
+                        </div>
+                        <div class="bg-gradient-to-tr from-sky-50 to-blue-100 p-6 rounded-2xl border border-blue-200 shadow-inner">
+                            <h4 class="font-bold text-blue-800 mb-3 flex items-center">
+                                <i class="fa-solid fa-lightbulb mr-2"></i> Mengapa Toleransi Sangat Penting?
+                            </h4>
+                            <ul class="space-y-3 text-slate-700 text-sm">
+                                <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-500 mr-2 mt-1"></i> <span>Mencegah terjadinya perpecahan dan konflik antarmasyarakat.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-500 mr-2 mt-1"></i> <span>Menciptakan kedamaian dan kenyamanan dalam belajar di sekolah serta hidup bermasyarakat.</span></li>
+                                <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-500 mr-2 mt-1"></i> <span>Mempererat tali persatuan bangsa sesuai semboyan <strong>Bhinneka Tunggal Ika</strong>.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2 -->
+                <div id="materi-tab-2" class="materi-content hidden space-y-6">
+                    <div class="space-y-4">
+                        <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-semibold">Sub-Bab 2</span>
+                        <h3 class="text-2xl font-extrabold text-slate-800">Jenis-Jenis Toleransi di Indonesia</h3>
+                        <p class="text-slate-600 text-sm md:text-base">
+                            Kehidupan bermasyarakat di Indonesia menuntut kita untuk memahami pilar-pilar toleransi dalam berbagai aspek:
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                        <!-- Card 1 -->
+                        <div class="bg-slate-50 border border-slate-150 p-5 rounded-xl hover:border-teal-500 transition duration-300">
+                            <div class="w-10 h-10 bg-rose-50 rounded-lg flex items-center justify-center text-rose-500 mb-3 font-bold">
+                                <i class="fa-solid fa-place-of-worship"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2 text-sm">Toleransi Beragama</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Menghormati perayaan ibadah penganut agama lain dan tidak memaksakan keyakinan kita kepada orang lain.
+                            </p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="bg-slate-50 border border-slate-150 p-5 rounded-xl hover:border-teal-500 transition duration-300">
+                            <div class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-500 mb-3 font-bold">
+                                <i class="fa-solid fa-people-roof"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2 text-sm">Toleransi Sosial-Budaya</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Menghargai keragaman adat istiadat, suku, bahasa daerah, serta tidak bersikap etnosentris (menganggap suku sendiri paling hebat).
+                            </p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="bg-slate-50 border border-slate-150 p-5 rounded-xl hover:border-teal-500 transition duration-300">
+                            <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-500 mb-3 font-bold">
+                                <i class="fa-solid fa-person-circle-question"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2 text-sm">Toleransi Berpolitik</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Menghargai perbedaan pendapat dalam berorganisasi (misal: saat pemilihan Ketua OSIS) tanpa memusuhi lawan politik.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3 -->
+                <div id="materi-tab-3" class="materi-content hidden space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full font-semibold">Sub-Bab 3</span>
+                            <h3 class="text-2xl font-extrabold text-slate-800">Penerapan Nyata di Sekolah & Masyarakat</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Sebagai pelajar SMP Kelas VIII, kamu adalah garda terdepan toleransi. Berikut adalah contoh penerapan yang harus dipraktikkan:
+                            </p>
+                            <ul class="space-y-3.5 text-slate-700 text-xs md:text-sm">
+                                <li class="flex items-center"><i class="fa-solid fa-circle-arrow-right text-teal-500 mr-2"></i> Berteman tanpa membeda-bedakan status sosial dan warna kulit.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-arrow-right text-teal-500 mr-2"></i> Memberi ucapan selamat hari raya besar agama teman dengan tulus.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-arrow-right text-teal-500 mr-2"></i> Mengutamakan musyawarah mufakat saat kerja kelompok di kelas.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-rose-50 border border-rose-200 p-6 rounded-2xl">
+                            <h4 class="font-bold text-rose-800 mb-3 flex items-center">
+                                <i class="fa-solid fa-triangle-exclamation mr-2"></i> Bahaya Intoleransi
+                            </h4>
+                            <p class="text-xs text-rose-700 leading-relaxed mb-4">
+                                Sikap intoleran adalah akar dari maraknya perundungan (*bullying*), diskriminasi, serta runtuhnya kerukunan nasional. Oleh karena itu, hindari mengolok-olok kebiasaan teman yang berbeda dengan kita!
+                            </p>
+                            <div class="bg-white p-3 rounded-xl border border-rose-100 flex items-center space-x-3">
+                                <div class="bg-rose-100 p-2.5 rounded-lg text-rose-600 text-lg">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <p class="text-[11px] text-slate-600 font-medium">Mari lindungi keutuhan kelas kita dari sikap pilih-pilih teman!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons inside Materi -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl shadow-md">
+                <button onclick="switchScreen('home')" class="text-teal-600 hover:text-teal-700 font-semibold text-sm flex items-center space-x-1">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Kembali ke Beranda</span>
+                </button>
+                <button onclick="switchScreen('simulasi')" class="bg-teal-500 hover:bg-teal-600 text-white font-bold px-5 py-2 rounded-xl text-sm flex items-center space-x-1 shadow-md transition">
+                    <span>Maju ke Studi Kasus</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= SIMULASI / STUDI KASUS SCREEN ================= -->
+        <section id="screen-simulasi" class="screen-section hidden space-y-6 animate-fade-in">
+            <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-gamepad text-2xl text-amber-500"></i>
+                    <h2 class="text-2xl font-bold text-slate-800">Lab Empati: Tantangan Kasus</h2>
+                </div>
+                <div class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">
+                    Skor Empati: <span id="empati-score">0</span> XP
+                </div>
+            </div>
+
+            <!-- Case Container (Dynamic Content) -->
+            <div id="simulasi-card" class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden">
+                <div class="bg-gradient-to-r from-amber-400 to-orange-400 p-6 text-white flex justify-between items-center">
+                    <h3 id="kasus-title" class="font-bold text-lg">Kasus #1: Teman Berbeda Ibadah</h3>
+                    <span id="kasus-step" class="bg-white text-orange-600 px-3 py-1 rounded-full text-xs font-bold">1 / 3</span>
+                </div>
+                <div class="p-6 md:p-8 space-y-6">
+                    <div class="flex flex-col md:flex-row gap-6 items-center bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 text-3xl shrink-0">
+                            <i id="kasus-icon" class="fa-solid fa-users"></i>
+                        </div>
+                        <p id="kasus-story" class="text-slate-700 text-sm md:text-base leading-relaxed">
+                            Kamu sedang memimpin kerja kelompok di rumahmu. Di tengah diskusi, Andi (teman satu kelompokmu yang beragama Hindu) menyadari waktu ibadahnya telah tiba dan ia memohon izin sejenak untuk beribadah di pojokan teras belakang. Bagaimana tanggapanmu?
+                        </p>
+                    </div>
+
+                    <!-- Options -->
+                    <div id="kasus-options" class="grid grid-cols-1 gap-4 pt-2">
+                        <!-- Option A -->
+                        <button onclick="submitKasusChoice('A')" class="p-4 bg-white hover:bg-teal-50 border-2 border-slate-200 hover:border-teal-400 rounded-xl text-left transition duration-200 text-sm group flex items-start space-x-3">
+                            <span class="bg-slate-100 group-hover:bg-teal-100 group-hover:text-teal-700 font-bold px-2.5 py-1 rounded text-xs text-slate-600 mt-0.5">A</span>
+                            <span id="opt-text-a" class="text-slate-700">Menyuruhnya menunda ibadahnya sampai tugas kelompok selesai terlebih dahulu agar kerjaan cepat kelar.</span>
+                        </button>
+                        <!-- Option B -->
+                        <button onclick="submitKasusChoice('B')" class="p-4 bg-white hover:bg-teal-50 border-2 border-slate-200 hover:border-teal-400 rounded-xl text-left transition duration-200 text-sm group flex items-start space-x-3">
+                            <span class="bg-slate-100 group-hover:bg-teal-100 group-hover:text-teal-700 font-bold px-2.5 py-1 rounded text-xs text-slate-600 mt-0.5">B</span>
+                            <span id="opt-text-b" class="text-slate-700">Mempersilakan Andi beribadah dengan tenang di tempat teduh dan meminta anggota lain menunggu dengan hening sejenak.</span>
+                        </button>
+                        <!-- Option C -->
+                        <button onclick="submitKasusChoice('C')" class="p-4 bg-white hover:bg-teal-50 border-2 border-slate-200 hover:border-teal-400 rounded-xl text-left transition duration-200 text-sm group flex items-start space-x-3">
+                            <span class="bg-slate-100 group-hover:bg-teal-100 group-hover:text-teal-700 font-bold px-2.5 py-1 rounded text-xs text-slate-600 mt-0.5">C</span>
+                            <span id="opt-text-c" class="text-slate-700">Memperbolehkan ia pergi beribadah tapi dengan ketus karena mengganggu waktu pengerjaan kelompok.</span>
+                        </button>
+                    </div>
+
+                    <!-- Feedback Container (Hidden initially) -->
+                    <div id="kasus-feedback" class="hidden p-5 rounded-xl text-sm border space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <span id="feedback-icon-badge" class="p-1 rounded-full text-white text-xs"><i class="fa-solid"></i></span>
+                            <span id="feedback-title" class="font-bold"></span>
+                        </div>
+                        <p id="feedback-text" class="text-slate-600 leading-relaxed"></p>
+                        <div class="flex justify-end pt-2">
+                            <button id="next-kasus-btn" onclick="nextKasus()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1 shadow transition">
+                                <span>Kasus Berikutnya</span> <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons inside Simulasi -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl shadow-md">
+                <button onclick="switchScreen('materi')" class="text-slate-600 hover:text-slate-700 font-semibold text-sm flex items-center space-x-1">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Kembali ke Materi</span>
+                </button>
+                <button onclick="switchScreen('kuis')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-2 rounded-xl text-sm flex items-center space-x-1 shadow-md transition">
+                    <span>Maju ke Kuis</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= KUIS SCREEN ================= -->
+        <section id="screen-kuis" class="screen-section hidden space-y-6 animate-fade-in">
+            <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-circle-question text-2xl text-emerald-600"></i>
+                    <h2 class="text-2xl font-bold text-slate-800">Uji Pemahaman Toleransi</h2>
+                </div>
+                <div class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-semibold">
+                    Skor Kuis: <span id="quiz-live-score">0</span> / 100
+                </div>
+            </div>
+
+            <!-- Quiz Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Main Quiz Board -->
+                <div class="md:col-span-2 space-y-4">
+                    <div id="quiz-question-card" class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 md:p-8 space-y-6">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                            <span class="text-slate-500 text-xs font-bold uppercase tracking-wider">Soal Pilihan Ganda</span>
+                            <span id="quiz-question-number" class="bg-emerald-50 text-emerald-700 font-bold px-3 py-1 rounded-full text-xs">Soal 1 dari 5</span>
+                        </div>
+                        <p id="quiz-question" class="text-slate-800 font-medium text-base md:text-lg leading-relaxed">
+                            Di bawah ini yang merupakan perbuatan menjunjung tinggi toleransi dalam pergaulan di sekolah adalah...
+                        </p>
+                        
+                        <!-- Answers (Interactive) -->
+                        <div id="quiz-options-container" class="space-y-3">
+                            <!-- Dynamically Generated -->
+                        </div>
+
+                        <!-- Submit/Next buttons -->
+                        <div id="quiz-action-area" class="flex justify-between items-center pt-2">
+                            <span id="quiz-msg" class="text-xs font-semibold text-slate-500"></span>
+                            <button id="quiz-submit-btn" onclick="submitQuizAnswer()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition shadow">
+                                Kunci Jawaban
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Sidebar -->
+                <div class="space-y-4">
+                    <!-- Progress Card -->
+                    <div class="bg-white p-5 rounded-2xl shadow-md border border-slate-100">
+                        <h4 class="font-bold text-slate-800 text-sm mb-3">Kemajuan Kuis</h4>
+                        <div class="flex space-x-2" id="quiz-dots-indicator">
+                            <!-- Dots generated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Did You Know? -->
+                    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-5 rounded-2xl shadow-md border border-indigo-100">
+                        <h4 class="font-bold text-indigo-800 text-sm mb-2 flex items-center">
+                            <i class="fa-solid fa-lightbulb mr-2 text-indigo-500"></i> Info Keren!
+                        </h4>
+                        <p class="text-[11px] text-slate-600 leading-relaxed">
+                            Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 secara tegas menjamin kebebasan beragama dan beribadah pada Pasal 29 Ayat (2). Inilah landasan hukum tertinggi bagi toleransi beragama kita!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Score Result Modal (Overlaid or custom div) -->
+            <div id="quiz-result-card" class="hidden bg-white rounded-2xl shadow-xl border border-emerald-100 p-8 text-center max-w-md mx-auto space-y-6">
+                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-500 text-5xl mx-auto shadow-inner">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-extrabold text-slate-800">Kuis Selesai! 🎉</h3>
+                    <p class="text-xs text-slate-400 mt-1">Luar biasa! Kamu telah melangkah jauh demi toleransi.</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-150 flex justify-around">
+                    <div>
+                        <span class="block text-xs text-slate-400 font-medium">Benar</span>
+                        <span id="res-correct" class="text-xl font-bold text-emerald-600">0</span>
+                    </div>
+                    <div class="border-r border-slate-200"></div>
+                    <div>
+                        <span class="block text-xs text-slate-400 font-medium">Skor Akhir</span>
+                        <span id="res-score" class="text-xl font-extrabold text-teal-600">0</span>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="resetQuiz()" class="w-1/2 border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold py-2.5 rounded-xl text-xs transition">
+                        Ulangi Kuis
+                    </button>
+                    <button onclick="switchScreen('refleksi')" class="w-1/2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2.5 rounded-xl text-xs shadow transition">
+                        Tulis Komitmen
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= REFLEKSI SCREEN ================= -->
+        <section id="screen-refleksi" class="screen-section hidden space-y-6 animate-fade-in">
+            <div class="flex items-center space-x-3 mb-4">
+                <i class="fa-solid fa-heart text-2xl text-purple-600"></i>
+                <h2 class="text-2xl font-bold text-slate-800">Pojok Refleksi Agen Toleransi</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Input Reflection Form -->
+                <div class="md:col-span-2 bg-white rounded-2xl shadow-lg border border-slate-100 p-6 md:p-8 space-y-5">
+                    <h3 class="font-bold text-slate-800 text-lg">Komitmen Toleransi-ku 📜</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Toleransi dimulai dari tindakan nyata yang sederhana dalam keseharian kita. Tuliskan janji belajarmu di bawah ini agar kamu senantiasa mengingatnya!
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1.5" for="ref-name">Nama Lengkap</label>
+                            <input type="text" id="ref-name" placeholder="Masukkan namamu..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1.5" for="ref-class">Kelas</label>
+                            <input type="text" id="ref-class" placeholder="Contoh: VIII-A" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1.5" for="ref-promise">Janji Tindakan Toleransiku di Sekolah</label>
+                            <textarea id="ref-promise" rows="3" placeholder="Contoh: Saya berjanji tidak akan memilih-milih teman dalam kerja kelompok..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="generateCertificate()" class="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white font-bold py-3 rounded-xl text-sm shadow-md hover:shadow-lg transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-file-signature"></i>
+                            <span>Terbitkan Sertifikat Agen Toleransi</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info Panel / Interactive Box -->
+                <div class="bg-gradient-to-b from-purple-50 to-indigo-50 rounded-2xl border border-purple-100 p-6 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-2xl">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h4 class="font-bold text-purple-900 text-sm">Mari Bersatu!</h4>
+                        <p class="text-[11px] text-slate-600 leading-relaxed">
+                            Pendidikan Pancasila mengajarkan bahwa persatuan tercipta bukan karena kita seragam, melainkan karena kita saling merangkul di sela keberagaman. Kamu adalah masa depan keharmonisan Indonesia!
+                        </p>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-purple-150">
+                        <div class="flex items-center space-x-2 mb-1.5">
+                            <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i>
+                            <span class="text-xs font-bold text-slate-700">Misi Selesai?</span>
+                        </div>
+                        <p class="text-[10px] text-slate-500">Pastikan kamu sudah mengerjakan kuis untuk mematangkan wawasan!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Certificate / Result Container (Hidden until generated) -->
+            <div id="certificate-box" class="hidden bg-white rounded-3xl p-6 md:p-8 shadow-2xl border-8 border-double border-teal-500 max-w-2xl mx-auto space-y-6 relative overflow-hidden animate-bounce" style="animation-duration: 10s;">
+                <!-- Decorative Frame Graphics -->
+                <div class="absolute -top-10 -left-10 w-24 h-24 bg-teal-500/10 rounded-full"></div>
+                <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-teal-500/10 rounded-full"></div>
+
+                <div class="text-center space-y-4">
+                    <span class="text-xs font-bold text-teal-600 uppercase tracking-widest block">Piagam Komitmen Belajar</span>
+                    <h3 class="text-2xl md:text-3xl font-black text-slate-800 tracking-wide">AGEN TOLERANSI MUDA</h3>
+                    
+                    <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-teal-500 to-transparent mx-auto my-1"></div>
+                    
+                    <p class="text-xs text-slate-500 italic">Diberikan sebagai pengakuan kepada siswa hebat:</p>
+                    <p id="cert-name" class="text-xl md:text-2xl font-bold text-slate-800 underline decoration-emerald-500 decoration-2 underline-offset-4"></p>
+                    <p id="cert-class" class="text-xs text-slate-400 font-medium"></p>
+                    
+                    <div class="max-w-md mx-auto bg-slate-50 p-4 rounded-xl border border-slate-100 my-4">
+                        <p class="text-xs text-slate-500 italic">"Saya berkomitmen penuh untuk:"</p>
+                        <p id="cert-promise" class="text-sm font-semibold text-teal-800 mt-2 leading-relaxed"></p>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-4 px-6">
+                        <div class="text-left">
+                            <span class="block text-[10px] text-slate-400">Tanggal Terbit</span>
+                            <span id="cert-date" class="text-xs font-bold text-slate-700"></span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-[10px] text-slate-400">Tim Developer</span>
+                            <span class="text-xs font-bold text-teal-600 tracking-wider">ToleranSik!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs space-y-3 md:space-y-0">
+            <div>
+                <p>&copy; 2026 ToleranSik! - Media Pembelajaran Interaktif Kelas 8 SMP.</p>
+                <p class="text-[10px] text-slate-500 mt-0.5">Didesain untuk melatih empati, karakter, dan pemahaman materi PPKn.</p>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" onclick="switchScreen('home')" class="hover:text-white transition">Beranda</a>
+                <span>&bull;</span>
+                <a href="#" onclick="switchScreen('materi')" class="hover:text-white transition">Materi</a>
+                <span>&bull;</span>
+                <a href="#" onclick="switchScreen('kuis')" class="hover:text-white transition">Kuis</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla Javascript Logic -->
+    <script>
+        // State variables
+        let currentScreen = 'home';
+        let currentMateriTab = 1;
+        let empatiScore = 0;
+        let isSoundOn = true;
+
+        // Custom Sound Generator using Web Audio API (Synthesizer)
+        function playSynthesizedSound(type) {
+            if (!isSoundOn) return;
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                if (type === 'click') {
+                    oscillator.frequency.setValueAtTime(500, audioCtx.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
+                    gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                    oscillator.start();
+                    oscillator.stop(audioCtx.currentTime + 0.1);
+                } else if (type === 'success') {
+                    oscillator.type = 'triangle';
+                    oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
+                    oscillator.frequency.setValueAtTime(800, audioCtx.currentTime + 0.1);
+                    oscillator.frequency.setValueAtTime(1200, audioCtx.currentTime + 0.2);
+                    gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+                    oscillator.start();
+                    oscillator.stop(audioCtx.currentTime + 0.4);
+                } else if (type === 'fail') {
+                    oscillator.type = 'sawtooth';
+                    oscillator.frequency.setValueAtTime(300, audioCtx.currentTime);
+                    oscillator.frequency.linearRampToValueAtTime(150, audioCtx.currentTime + 0.3);
+                    gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    oscillator.start();
+                    oscillator.stop(audioCtx.currentTime + 0.3);
+                }
+            } catch (e) {
+                console.log("Audio not supported or interaction needed first.");
+            }
+        }
+
+        // Toggle sound setting
+        function toggleSound() {
+            isSoundOn = !isSoundOn;
+            const icon = document.getElementById('soundIcon');
+            if (isSoundOn) {
+                icon.className = 'fa-solid fa-volume-high';
+            } else {
+                icon.className = 'fa-solid fa-volume-xmark';
+            }
+            playSynthesizedSound('click');
+        }
+
+        // Screen navigation logic
+        function switchScreen(screenName) {
+            playSynthesizedSound('click');
+            
+            // Hide all screen sections
+            document.querySelectorAll('.screen-section').forEach(el => el.classList.add('hidden'));
+            
+            // Show requested screen
+            const target = document.getElementById(`screen-${screenName}`);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+            currentScreen = screenName;
+
+            // Handle Nav Link highlights (Desktop design helper)
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-teal-600', 'text-white');
+            });
+            
+            // Highlight specific active tabs depending on action if needed
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Materi sub-tab switcher
+        function switchMateriTab(tabNumber) {
+            playSynthesizedSound('click');
+            // Hide all tabs
+            document.querySelectorAll('.materi-content').forEach(el => el.classList.add('hidden'));
+            // Remove active classes
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`tab-btn-${i}`);
+                if (btn) {
+                    btn.className = "px-5 py-3 font-semibold text-sm rounded-lg transition-all duration-200 text-slate-600 hover:bg-slate-50";
+                }
+            }
+
+            // Show current active tab
+            document.getElementById(`materi-tab-${tabNumber}`).classList.remove('hidden');
+            document.getElementById(`tab-btn-${tabNumber}`).className = "px-5 py-3 font-semibold text-sm rounded-lg transition-all duration-200 bg-teal-500 text-white";
+            currentMateriTab = tabNumber;
+        }
+
+        // ================= SIMULASI DATA & LOGIC =================
+        const kasusData = [
+            {
+                title: "Kasus #1: Teman Berbeda Ibadah",
+                icon: "fa-solid fa-clock-rotate-left",
+                story: "Kamu sedang memimpin kerja kelompok di rumahmu. Di tengah diskusi, Andi (teman kelompokmu yang beragama Hindu) menyadari waktu ibadahnya telah tiba dan memohon izin sejenak untuk beribadah di ruangan/teras belakang. Bagaimana keputusanmu?",
+                choices: {
+                    A: {
+                        text: "Menyuruhnya menunda ibadah demi target selesai cepat.",
+                        correct: false,
+                        xp: 0,
+                        feedback: "Kurang tepat. Memaksa seseorang menunda ibadah demi kepentingan kelompok mencederai kebebasan beragama yang dijamin konstitusi."
+                    },
+                    B: {
+                        text: "Mempersilakan Andi beribadah dengan tenang dan meminta anggota kelompok lain menghargai.",
+                        correct: true,
+                        xp: 30,
+                        feedback: "Hebat! Pilihan cerdas. Menghargai hak beribadah orang lain adalah ciri mulia generasi Pancasila."
+                    },
+                    C: {
+                        text: "Memperbolehkan ia pergi tapi dengan menunjukkan ekspresi ketus.",
+                        correct: false,
+                        xp: 10,
+                        feedback: "Kurang tepat. Memberikan izin setengah hati disertai sikap ketus dapat menyinggung perasaan temanmu dan mengurangi kenyamanan kerja sama."
+                    }
+                }
+            },
+            {
+                title: "Kasus #2: Bekal Makanan Unik",
+                icon: "fa-solid fa-utensils",
+                story: "Lina membawa bekal makan siang khas daerah asalnya yang menggunakan bumbu terasi berbau tajam dan pekat. Teman sekelasmu banyak yang menutup hidung sambil tertawa mengejeknya. Apa tindakanmu?",
+                choices: {
+                    A: {
+                        text: "Ikut tertawa pelan agar dianggap kompak oleh geng pergaulanmu.",
+                        correct: false,
+                        xp: 0,
+                        feedback: "Salah! Ikut tertawa berarti melestarikan perilaku diskriminatif dan perundungan suku terhadap budaya kuliner daerah lain."
+                    },
+                    B: {
+                        text: "Menyuruh Lina makan di kantin luar sendirian agar tidak mengganggu seisi kelas.",
+                        correct: false,
+                        xp: 10,
+                        feedback: "Kurang pas. Mengasingkan Lina ke luar bukanlah tindakan menyelesaikan masalah dengan empati."
+                    },
+                    C: {
+                        text: "Mengingatkan teman-teman agar tenang, lalu duduk di sebelah Lina untuk mencicipi dan menghargai bekalnya.",
+                        correct: true,
+                        xp: 40,
+                        feedback: "Sangat Menakjubkan! Menghargai kuliner Nusantara yang sangat beragam melambangkan indahnya kerukunan sosial."
+                    }
+                }
+            },
+            {
+                title: "Kasus #3: Kerja Sama saat Diskusi OSIS",
+                icon: "fa-solid fa-comments",
+                story: "Saat rapat OSIS, ide gila dari kelompok lain sangat bertentangan dengan idemu. Dia terlihat kurang lancar menjelaskan gagasannya. Bagaimana kamu menanggapinya?",
+                choices: {
+                    A: {
+                        text: "Menyela penjelasannya secara langsung dan menyatakan idenya buruk di depan umum.",
+                        correct: false,
+                        xp: 5,
+                        feedback: "Kurang etis. Memotong pembicaraan orang lain secara kasar menunjukkan minimnya rasa toleransi berpendapat."
+                    },
+                    B: {
+                        text: "Mendengarkan dengan tekun sampai ia selesai bicara, kemudian menyampaikan masukan perbaikan secara santun.",
+                        correct: true,
+                        xp: 30,
+                        feedback: "Luar Biasa! Menghargai kebebasan berbicara dan mengutarakan argumen secara tertib adalah pilar penting demokrasi Pancasila."
+                    },
+                    C: {
+                        text: "Diam saja tapi mengabaikan keputusannya dan membuat kubu tandingan.",
+                        correct: false,
+                        xp: 10,
+                        feedback: "Kurang produktif. Memendam kekesalan lalu membentuk kubu rahasia hanya memicu polarisasi negatif dalam organisasi."
+                    }
+                }
+            }
+        ];
+
+        let currentKasusIndex = 0;
+
+        function renderKasus() {
+            const data = kasusData[currentKasusIndex];
+            document.getElementById('kasus-title').innerText = data.title;
+            document.getElementById('kasus-step').innerText = `${currentKasusIndex + 1} / ${kasusData.length}`;
+            document.getElementById('kasus-story').innerText = data.story;
+            document.getElementById('kasus-icon').className = `${data.icon} text-3xl text-amber-600`;
+            
+            // Set choice texts
+            document.getElementById('opt-text-a').innerText = data.choices.A.text;
+            document.getElementById('opt-text-b').innerText = data.choices.B.text;
+            document.getElementById('opt-text-c').innerText = data.choices.C.text;
+
+            // Hide feedback panel and enable buttons
+            document.getElementById('kasus-feedback').className = "hidden";
+            enableKasusButtons(true);
+        }
+
+        function enableKasusButtons(enable) {
+            const buttons = document.querySelectorAll('#kasus-options button');
+            buttons.forEach(btn => {
+                btn.disabled = !enable;
+                if (enable) {
+                    btn.classList.remove('opacity-50', 'border-slate-300');
+                    btn.classList.add('hover:bg-teal-50', 'hover:border-teal-400');
+                } else {
+                    btn.classList.add('opacity-50');
+                    btn.classList.remove('hover:bg-teal-50', 'hover:border-teal-400');
+                }
+            });
+        }
+
+        function submitKasusChoice(choiceKey) {
+            const data = kasusData[currentKasusIndex];
+            const choice = data.choices[choiceKey];
+
+            // Increase XP Score
+            empatiScore += choice.xp;
+            document.getElementById('empati-score').innerText = empatiScore;
+
+            // Render Feedback Panel
+            const fbBox = document.getElementById('kasus-feedback');
+            const fbTitle = document.getElementById('feedback-title');
+            const fbText = document.getElementById('feedback-text');
+            const badge = document.getElementById('feedback-icon-badge');
+
+            fbBox.className = "p-5 rounded-xl text-sm border space-y-3 block";
+            fbText.innerText = choice.feedback;
+
+            if (choice.correct) {
+                playSynthesizedSound('success');
+                fbBox.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+                fbBox.classList.remove('bg-rose-50', 'border-rose-200', 'text-rose-900', 'bg-slate-50', 'border-slate-200');
+                fbTitle.innerText = `Luar Biasa (+${choice.xp} XP)`;
+                badge.className = "p-1 rounded-full text-white text-xs bg-emerald-500";
+                badge.querySelector('i').className = "fa-solid fa-check";
+            } else {
+                playSynthesizedSound('fail');
+                fbBox.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
+                fbBox.classList.remove('bg-emerald-50', 'border-emerald-200', 'text-emerald-900', 'bg-slate-50', 'border-slate-200');
+                fbTitle.innerText = `Ayo Belajar Lagi (+${choice.xp} XP)`;
+                badge.className = "p-1 rounded-full text-white text-xs bg-rose-500";
+                badge.querySelector('i').className = "fa-solid fa-xmark";
+            }
+
+            // Disable further choice clicks
+            enableKasusButtons(false);
+
+            // Change button text if last case
+            if (currentKasusIndex === kasusData.length - 1) {
+                document.getElementById('next-kasus-btn').innerHTML = `<span>Selesai & Lanjut Kuis</span> <i class="fa-solid fa-flag-checkered"></i>`;
+            } else {
+                document.getElementById('next-kasus-btn').innerHTML = `<span>Kasus Berikutnya</span> <i class="fa-solid fa-chevron-right"></i>`;
+            }
+        }
+
+        function nextKasus() {
+            playSynthesizedSound('click');
+            if (currentKasusIndex < kasusData.length - 1) {
+                currentKasusIndex++;
+                renderKasus();
+            } else {
+                // Completed all simulations, go to quiz
+                switchScreen('kuis');
+            }
+        }
+
+        // ================= KUIS DATA & LOGIC =================
+        const quizQuestions = [
+            {
+                q: "Secara etimologis, istilah toleransi diambil dari bahasa Latin 'tolerare' yang memiliki makna...",
+                options: [
+                    "Bekerja keras dan mengejar prestasi tanpa batas",
+                    "Bersabar, menahan diri, dan berlapang dada terhadap perbedaan",
+                    "Menolak segala argumen di luar kesepakatan kelompok",
+                    "Mencampuradukkan ajaran ibadah agama-agama yang ada"
+                ],
+                answer: 1,
+                hint: "Konsep dasar toleransi adalah kelapangan dada."
+            },
+            {
+                q: "Semboyan persatuan bangsa Indonesia tertera jelas dalam cengkeraman lambang burung Garuda Pancasila, berbunyi...",
+                options: [
+                    "Tut Wuri Handayani",
+                    "Ing Ngarsa Sung Tuladha",
+                    "Bhinneka Tunggal Ika",
+                    "Jalesveva Jayamahe"
+                ],
+                answer: 2,
+                hint: "Semboyan ini diambil dari Kitab Sutasoma karangan Mpu Tantular."
+            },
+            {
+                q: "Di dalam kelas 8-C sedang dilakukan pemilihan ketua kelas baru secara musyawarah. Perilaku yang mencerminkan toleransi berpolitik adalah...",
+                options: [
+                    "Keluar kelas karena kandidat idola kita tidak terpilih",
+                    "Memusuhi teman yang memilih calon ketua kelas pilihan lain",
+                    "Menerima dengan lapang dada siapapun ketua kelas yang terpilih secara mufakat",
+                    "Meminta guru wali kelas membatalkan hasil musyawarah"
+                ],
+                answer: 2,
+                hint: "Demokrasi sehat mengedepankan penerimaan keputusan mufakat."
+            },
+            {
+                q: "Landasan hukum konstitusional tertinggi di Indonesia yang menjamin kebebasan memeluk agama dan beribadat tercantum dalam UUD NRI 1945 pasal...",
+                options: [
+                    "Pasal 27 ayat 1",
+                    "Pasal 29 ayat 2",
+                    "Pasal 30 ayat 1",
+                    "Pasal 31 ayat 2"
+                ],
+                answer: 1,
+                hint: "Pasal yang mengatur bidang keagamaan secara spesifik."
+            },
+            {
+                q: "Andi mengolok-olok dialek khas daerah lain yang diucapkan temannya saat presentasi kelompok. Sikap Andi ini melanggar nilai...",
+                options: [
+                    "Toleransi Kebinekaan dan Persaudaraan",
+                    "Kebebasan mengutarakan aspirasi politik",
+                    "Ketertiban dalam berlalulintas sekolah",
+                    "Pelestarian kesenian modern"
+                ],
+                answer: 0,
+                hint: "Mengolok-olok ciri budaya daerah memicu keretakan NKRI."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let selectedOptionIdx = null;
+        let isAnswerSubmitted = false;
+        let quizScore = 0;
+        let correctAnswersCount = 0;
+
+        function renderQuiz() {
+            const data = quizQuestions[currentQuizIndex];
+            document.getElementById('quiz-question-number').innerText = `Soal ${currentQuizIndex + 1} dari ${quizQuestions.length}`;
+            document.getElementById('quiz-question').innerText = data.q;
+
+            const container = document.getElementById('quiz-options-container');
+            container.innerHTML = '';
+
+            data.options.forEach((optText, index) => {
+                const optBtn = document.createElement('button');
+                optBtn.className = "w-full p-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left text-sm transition flex items-center space-x-3";
+                optBtn.onclick = () => selectQuizOption(index);
+                optBtn.id = `quiz-opt-${index}`;
+                optBtn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center font-bold text-xs shrink-0 bg-white" id="quiz-opt-marker-${index}">
+                        ${String.fromCharCode(65 + index)}
+                    </span>
+                    <span class="text-slate-700 font-medium">${optText}</span>
+                `;
+                container.appendChild(optBtn);
+            });
+
+            // Set Action button states
+            document.getElementById('quiz-submit-btn').innerText = "Kunci Jawaban";
+            document.getElementById('quiz-msg').innerText = "Silakan klik salah satu opsi jawaban di atas.";
+            selectedOptionIdx = null;
+            isAnswerSubmitted = false;
+
+            updateQuizDots();
+        }
+
+        function updateQuizDots() {
+            const container = document.getElementById('quiz-dots-indicator');
+            container.innerHTML = '';
+            for (let i = 0; i < quizQuestions.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = `w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                    i === currentQuizIndex ? 'bg-emerald-500 text-white shadow' : 
+                    i < currentQuizIndex ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-400'
+                }`;
+                dot.innerText = i + 1;
+                container.appendChild(dot);
+            }
+        }
+
+        function selectQuizOption(idx) {
+            if (isAnswerSubmitted) return;
+            playSynthesizedSound('click');
+            selectedOptionIdx = idx;
+
+            // Clear previous outlines
+            for (let i = 0; i < 4; i++) {
+                const opt = document.getElementById(`quiz-opt-${i}`);
+                const marker = document.getElementById(`quiz-opt-marker-${i}`);
+                if (opt) {
+                    opt.className = "w-full p-3.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left text-sm transition flex items-center space-x-3";
+                    marker.className = "w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center font-bold text-xs shrink-0 bg-white text-slate-600";
+                }
+            }
+
+            // Outline selected option
+            const selOpt = document.getElementById(`quiz-opt-${idx}`);
+            const selMarker = document.getElementById(`quiz-opt-marker-${idx}`);
+            if (selOpt) {
+                selOpt.className = "w-full p-3.5 bg-teal-50 border-2 border-teal-500 rounded-xl text-left text-sm transition flex items-center space-x-3 shadow-md";
+                selMarker.className = "w-6 h-6 rounded-full bg-teal-500 text-white flex items-center justify-center font-bold text-xs shrink-0";
+            }
+            document.getElementById('quiz-msg').innerText = "Tekan tombol 'Kunci Jawaban' untuk mengonfirmasi pilihanmu.";
+        }
+
+        function submitQuizAnswer() {
+            if (selectedOptionIdx === null) {
+                alert("Pilihlah salah satu opsi jawaban terlebih dahulu sebelum mengunci!");
+                return;
+            }
+
+            const data = quizQuestions[currentQuizIndex];
+            const isCorrect = selectedOptionIdx === data.answer;
+            isAnswerSubmitted = true;
+
+            // Visual feedback on correct/incorrect option
+            for (let i = 0; i < 4; i++) {
+                const opt = document.getElementById(`quiz-opt-${i}`);
+                if (opt) opt.disabled = true; // disable all options
+            }
+
+            const selectedBtn = document.getElementById(`quiz-opt-${selectedOptionIdx}`);
+            const correctBtn = document.getElementById(`quiz-opt-${data.answer}`);
+
+            if (isCorrect) {
+                playSynthesizedSound('success');
+                selectedBtn.className = "w-full p-3.5 bg-emerald-50 border-2 border-emerald-500 rounded-xl text-left text-sm transition flex items-center space-x-3 shadow-md text-emerald-950";
+                document.getElementById(`quiz-opt-marker-${selectedOptionIdx}`).className = "w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shrink-0";
+                
+                correctAnswersCount++;
+                quizScore += 20; // 5 questions, 20 points each
+                document.getElementById('quiz-live-score').innerText = quizScore;
+                document.getElementById('quiz-msg').innerText = "Selamat! Jawabanmu benar 🎉";
+            } else {
+                playSynthesizedSound('fail');
+                selectedBtn.className = "w-full p-3.5 bg-rose-50 border-2 border-rose-500 rounded-xl text-left text-sm transition flex items-center space-x-3 shadow-md text-rose-950";
+                document.getElementById(`quiz-opt-marker-${selectedOptionIdx}`).className = "w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold text-xs shrink-0";
+                
+                // Highlight the correct answer
+                correctBtn.className = "w-full p-3.5 bg-emerald-50 border-2 border-emerald-300 rounded-xl text-left text-sm transition flex items-center space-x-3 text-emerald-950";
+                document.getElementById(`quiz-opt-marker-${data.answer}`).className = "w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shrink-0";
+                
+                document.getElementById('quiz-msg').innerText = `Kurang tepat. Jawaban yang benar ditandai warna hijau.`;
+            }
+
+            // Change Action button
+            const submitBtn = document.getElementById('quiz-submit-btn');
+            if (currentQuizIndex === quizQuestions.length - 1) {
+                submitBtn.innerText = "Lihat Skor Akhir";
+                submitBtn.onclick = showQuizResults;
+            } else {
+                submitBtn.innerText = "Soal Berikutnya";
+                submitBtn.onclick = nextQuizQuestion;
+            }
+        }
+
+        function nextQuizQuestion() {
+            playSynthesizedSound('click');
+            currentQuizIndex++;
+            renderQuiz();
+            
+            // Revert submit click handler
+            const submitBtn = document.getElementById('quiz-submit-btn');
+            submitBtn.onclick = submitQuizAnswer;
+        }
+
+        function showQuizResults() {
+            playSynthesizedSound('success');
+            // Hide Question board
+            document.getElementById('quiz-question-card').classList.add('hidden');
+            // Show result board
+            const resCard = document.getElementById('quiz-result-card');
+            resCard.classList.remove('hidden');
+
+            document.getElementById('res-correct').innerText = correctAnswersCount;
+            document.getElementById('res-score').innerText = quizScore;
+        }
+
+        function resetQuiz() {
+            playSynthesizedSound('click');
+            currentQuizIndex = 0;
+            selectedOptionIdx = null;
+            isAnswerSubmitted = false;
+            quizScore = 0;
+            correctAnswersCount = 0;
+
+            document.getElementById('quiz-live-score').innerText = "0";
+            document.getElementById('quiz-question-card').classList.remove('hidden');
+            document.getElementById('quiz-result-card').classList.add('hidden');
+
+            const submitBtn = document.getElementById('quiz-submit-btn');
+            submitBtn.onclick = submitQuizAnswer;
+
+            renderQuiz();
+        }
+
+        // ================= REFLEKSI & SERTIFIKAT LOGIC =================
+        function generateCertificate() {
+            const name = document.getElementById('ref-name').value.trim();
+            const classVal = document.getElementById('ref-class').value.trim();
+            const promise = document.getElementById('ref-promise').value.trim();
+
+            if (!name || !classVal || !promise) {
+                alert("Harap lengkapi seluruh formulir refleksi (Nama, Kelas, & Komitmen) terlebih dahulu!");
+                return;
+            }
+
+            playSynthesizedSound('success');
+
+            // Set Certificate Data
+            document.getElementById('cert-name').innerText = name.toUpperCase();
+            document.getElementById('cert-class').innerText = `Kelas: ${classVal}`;
+            document.getElementById('cert-promise').innerText = `"${promise}"`;
+            
+            // Set current date format
+            const now = new Date();
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('cert-date').innerText = now.toLocaleDateString('id-ID', dateOptions);
+
+            // Display certificate box
+            const certBox = document.getElementById('certificate-box');
+            certBox.classList.remove('hidden');
+            
+            // Scroll down smoothly to show certificate
+            certBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize state on first load
+        window.onload = () => {
+            renderKasus();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
